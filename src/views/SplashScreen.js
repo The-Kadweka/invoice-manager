@@ -1,7 +1,6 @@
-import { StyleSheet, Image,Text, View, Animated, Dimensions } from 'react-native'
+import { StyleSheet, View, Animated, Dimensions, SafeAreaView } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 const SplashScreen = () => {
   const [authLoaded,setAuthLoaded]= useState(false)
@@ -41,15 +40,18 @@ const SplashScreen = () => {
   })
   return (
    <SafeAreaView style={styles.container}>
-    <View style={styles.contentContainer}>
+    {/* <View style={styles.contentContainer}> */}
 <Animated.Image style={[styles.image,{opacity:fadeAnim}]}
   source={require('../../assets/images/splash.png')}
 />
 <Animated.View style={[styles.logoContainer,{marginLeft:moveAnim}]}>
-  <Animated.Text style={[styles.logoText]}>A</Animated.Text>
-  <Animated.Text style={[styles.logoText,{opacity:fadeAnim}]}>ccounting</Animated.Text>
+  <Animated.Text style={[styles.logoText]}>I</Animated.Text>
+  <Animated.Text style={[styles.logoText,{opacity:fadeAnim}]}>nvoice</Animated.Text>
+
+  <Animated.Text style={[styles.logoText,{marginLeft:10}]} >M</Animated.Text>
+  <Animated.Text style={[styles.logoText,{opacity:fadeAnim}]}>anager</Animated.Text>
 </Animated.View>
-    </View>
+    {/* </View> */}
    </SafeAreaView>
   )
 }
@@ -58,19 +60,16 @@ export default SplashScreen
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
     flex: 1,
+    justifyContent:'center',
     backgroundColor: '#AD40AF',
+    alignItems:'center'
   },
   logoText: {
-    fontSize: 35,
+    fontSize: 45,
     marginTop: 20,
     color: 'white',
     fontWeight: '700',
-  },
-  contentContainer: {
-    top: '40%',
-    alignItems: 'center',
   },
   image: {
     width: 100,

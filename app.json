@@ -1,18 +1,14 @@
 {
   "expo": {
-    "name": "Cmobile",
-    "slug": "Cmobile",
+    "name": "Invoice Manager",
+    "slug": "InvManager",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/logo.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/4bba2066-5b25-457a-9a81-e6ee372721cd"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -21,13 +17,22 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "tothepointcode.invmanager",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/images/logo.png",
+        "backgroundColor": "#AD40AF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4bba2066-5b25-457a-9a81-e6ee372721cd"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

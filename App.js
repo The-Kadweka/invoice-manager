@@ -5,11 +5,11 @@ import AppStack from './src/navigation/AppStack';
 import { AuthProvider } from './src/context/AuthContext';
 export default function App() {
   return (
-<AuthProvider>
-<NavigationContainer>
-    <AppStack/>
+    <NavigationContainer>
+      <AuthProvider>
+          <AppStack/>
+      </AuthProvider>
   </NavigationContainer>
-</AuthProvider>
 
   );
 }

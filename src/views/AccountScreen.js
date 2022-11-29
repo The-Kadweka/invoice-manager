@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text,TouchableOpacity, View ,Dimensions} from 'react-native'
+import {StyleSheet, Text,TouchableOpacity, View ,Dimensions} from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -10,9 +10,9 @@ import React,{useContext} from 'react'
 const HEIGHT =Dimensions.get('window').height
 const AccountScreen = () => {
     const navigation = useNavigation();
-    const {logout,userInfo} = useContext(AuthContext);
+    const {logout,isLoading,userInfo} = useContext(AuthContext);
   return (
-   <SafeAreaView style={styles.Container}>
+   <View style={styles.Container} translucent={true}>
     <View style={styles.topContainer}>
         <View style={styles.topText}>
             <TouchableOpacity style={{
@@ -87,7 +87,7 @@ const AccountScreen = () => {
         </View>
         <TouchableOpacity  
         onPress={()=>{
-            logout
+            logout()
         }}
         style={{
             flexDirection:'row',
@@ -109,7 +109,7 @@ const AccountScreen = () => {
         </TouchableOpacity>
     </View>
    </View>
-   </SafeAreaView>
+   </View>
   )
 }
 
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         },
         topContainer:{
             backgroundColor:'white',
-            top:'5%',
+            top:15,
             marginLeft:20,
             marginRight:20,
             height:'40%'

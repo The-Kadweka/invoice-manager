@@ -1,10 +1,11 @@
-import { Image, SafeAreaView, StyleSheet, Text,TouchableOpacity, View } from 'react-native'
+import { Image,StyleSheet, Text,TouchableOpacity, View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useContext, useState } from 'react'
 import CustomInputFields from '../shared/CustomInputFields';
 import CustomButtom from '../shared/CustomButtom';
+import CustomSpinner from '../shared/CustomSpinner'
 import { AuthContext } from '../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -14,9 +15,12 @@ const RegisterScreen = ({navigation}) => {
   const [phone,setPhone]=useState();
   const [password,setPassword]=useState();
   const [vat,setVat]=useState();
-  const {isLoading,register} = useContext(AuthContext);
-  return (
-    <SafeAreaView style={styles.container}>
+  const {isLoading,errorMessage,register} = useContext(AuthContext);
+  const getContent=()=>{
+    if(isLoading){
+      return <CustomSpinner/>
+    }
+    return   <View style={styles.container}>
     <View style={{paddingHorizontal:25}}>
     <View style={styles.ImageView}>
     <Image source={require('../../assets/images/register.png')} style={styles.Image}/>
@@ -67,6 +71,9 @@ const RegisterScreen = ({navigation}) => {
         <Ionicons name="ios-lock-closed-outline" size={20} color="black" style={{marginRight:5}}/>
 
       }/>
+       <View style={{justifyContent:'center',alignItems:'center',marginBottom:10}}>
+        <Text style={{color:'red',fontSize:15,fontWeight:'bold'}}>{errorMessage.message}</Text>
+      </View>
     <CustomButtom 
       label={'Register'}
       onPress={()=>{
@@ -93,8 +100,13 @@ const RegisterScreen = ({navigation}) => {
       </View>
       </View>
 
-    </SafeAreaView>
-  )
+    </View>
+  }
+  return (
+    <View isLoading style={styles.container}>
+    {getContent()}
+   </View>
+  );
 }
 
 export default RegisterScreen
